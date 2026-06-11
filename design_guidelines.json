@@ -1,0 +1,155 @@
+{
+  "app_name": "Nusatani",
+  "personality": "1 iOS-Native Clean",
+  "personality_one_liner": "Earthy, trustworthy, and premium B2B agricultural commodity marketplace that feels native, modern, and data-driven.",
+  "color": {
+    "surface": "#FAFAF8",
+    "onSurface": "#1A2B22",
+    "surfaceSecondary": "#FFFFFF",
+    "onSurfaceSecondary": "#1A2B22",
+    "surfaceTertiary": "#F1F1EB",
+    "onSurfaceTertiary": "#2E5A36",
+    "surfaceInverse": "#1A2B22",
+    "onSurfaceInverse": "#FAFAF8",
+    "brand": "#2E5A36",
+    "brandPrimary": "#2E5A36",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#D87F55",
+    "onBrandSecondary": "#FFFFFF",
+    "brandTertiary": "#E7F0E8",
+    "onBrandTertiary": "#2E5A36",
+    "success": "#267A43",
+    "onSuccess": "#FFFFFF",
+    "warning": "#E8A33A",
+    "onWarning": "#FFFFFF",
+    "error": "#BA3B3B",
+    "onError": "#FFFFFF",
+    "info": "#4A6E55",
+    "onInfo": "#FFFFFF",
+    "border": "#E5E5DF",
+    "borderStrong": "#C8C8C0",
+    "divider": "#E5E5DF"
+  },
+  "typography": {
+    "displayFontFamily": "Lora",
+    "textFontFamily": "Plus Jakarta Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous iOS-native vertical spacing. Keep data tables breathable. Cards should not flush to screen edges; always use lg or xl padding. Thumb-zone sticky CTAs for main actions.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": 1,
+  "navigation": "bottom_tabs",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use glass on the bottom tab bar",
+      "Use frosted glass overlay on hero commodity cards placed over spice imagery",
+      "Sticky section headers for price tables should use glass with a tint"
+    ],
+    "dont's": [
+      "Never apply glass to regular list rows or data tables",
+      "Do not blur form fields or body text regions"
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Beranda (Dashboard)",
+      "purpose": "Provide a quick overview of today's commodity market and real-time prices.",
+      "states": {
+        "loading": "Skeleton loading for hero card and price list.",
+        "empty": "N/A - Data always present.",
+        "error": "Failed to fetch market data. Display retry button."
+      },
+      "layout": "Hero section at top: A large featured card (Glassmorphism over a subtle earthy photo) showing the 'Indeks Harga' (Price Index). Below that, a horizontal scrolling list of top commodities (Jahe, Lada, Kunyit) with current price and green/red trend arrows. Followed by a 'Tren Terkini' section with a clean data table layout."
+    },
+    {
+      "name": "Harga & Grafik (Prices)",
+      "purpose": "Deep dive into real-time price tables and historical trend charts for specific commodities.",
+      "states": {
+        "loading": "Spinner centered in chart area.",
+        "empty": "Illustration of an empty field with 'Belum ada data' message.",
+        "error": "Error fetching chart data."
+      },
+      "layout": "Sticky header. Main chart area using a clean, readable line graph (no noise). Below chart, a segmented control to switch timeframes (1H, 1B, 1T). Below that, a detailed table with 'Harga Beli' (Buy Price) and 'Harga Jual' (Sell Price). Data numbers must be crisp, aligned right."
+    },
+    {
+      "name": "Cari Pembeli (Buyer Finder)",
+      "purpose": "Search, filter, and discover potential commodity buyers easily.",
+      "states": {
+        "loading": "Skeleton cards representing buyer list.",
+        "empty": "Illustration of an empty box with 'Tidak ada pembeli ditemukan' message.",
+        "error": "Network error, retry button."
+      },
+      "layout": "Top prominent search bar with filter icon. Horizontal scrollable filter chips below it (Komoditas, Lokasi, Harga). Main content is card-based directory listings showing Buyer Name, Distance, Desired Commodity, and Price Offered. Each card has a primary 'Hubungi' (Contact) button."
+    },
+    {
+      "name": "Detail Pembeli",
+      "purpose": "View full details of a buyer and initiate contact.",
+      "states": {
+        "loading": "Spinner centered.",
+        "empty": "N/A",
+        "error": "Failed to load buyer details."
+      },
+      "layout": "Cover banner (photo or brand gradient) with gradient-to-dark scrim. Buyer name and verification badge overlaid. Content below: 'Kebutuhan Komoditas' (Commodity Needs), 'Lokasi Pengiriman' (Delivery Location), and terms. A sticky primary CTA at the bottom 'Hubungi Pembeli' (Contact Buyer)."
+    }
+  ],
+  "images": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80",
+      "dark": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80",
+      "alt": "Assorted fresh spices and agricultural commodities"
+    },
+    "ginger_commodity": {
+      "url": "https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=800&q=80",
+      "dark": "https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?w=800&q=80",
+      "alt": "Fresh ginger roots"
+    },
+    "buyer_empty_state": {
+      "url": "https://images.unsplash.com/photo-1589923188900-85dae523342b?w=800&q=80",
+      "alt": "Empty wooden crates representing no buyers found"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use Lora for display text (App headers, big numbers, hero titles) and Plus Jakarta Sans for UI text (buttons, labels, tables).",
+    "Strictly follow the color palette. DO NOT USE ANY BLUE OR PURPLE anywhere in the app. Use the defined 'brand' (moss green) and 'brandSecondary' (terracotta) for all accents and CTAs.",
+    "Implement the gradient scrim pattern (transparent to surfaceInverse) for text overlaying any commodity/hero images.",
+    "For the 'Cari Pembeli' screen, make sure cards have clear visual hierarchy. Put the 'Hubungi' button on the right side or bottom of the card with the 'brandSecondary' color.",
+    "Data tables must be highly legible. Use generous padding inside table cells and avoid heavy borders (use 'divider' color at 0.5pt).",
+    "Keep navigation native. Use a bottom tab bar with 3 items: Beranda, Harga (Prices), Pembeli (Buyers).",
+    "Any 'loading' or 'error' state must take the full screen height (flex: 1) and be properly centered.",
+    "MOCKED IMAGES: Image fetching failed, so I have provided realistic Unsplash URLs as placeholders. Please use them as provided in the 'images' object."
+  ]
+}
