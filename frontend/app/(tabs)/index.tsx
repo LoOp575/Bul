@@ -99,7 +99,7 @@ export default function HomeScreen() {
           />
           <View style={styles.heroContent}>
             <Text style={styles.heroLabel}>INDEKS HARGA REMPAH</Text>
-            <Text style={styles.heroValue}>{overview?.index_value.toFixed(2)}</Text>
+            <Text style={styles.heroValue}>{overview?.index_value?.toFixed(2) ?? "0.00"}</Text>
             <View style={styles.heroRow}>
               <View
                 style={[
@@ -111,7 +111,7 @@ export default function HomeScreen() {
                 <Text style={styles.changePillText}>{formatPct(overview?.index_change_pct ?? 0)}</Text>
               </View>
               <Text style={styles.heroMeta}>
-                {overview?.gainers} naik · {overview?.losers} turun
+                {overview?.gainers ?? 0} naik · {overview?.losers ?? 0} turun
               </Text>
             </View>
           </View>
@@ -121,8 +121,8 @@ export default function HomeScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Pergerakan Tertinggi</Text>
           <View style={styles.moverRow}>
-            <MoverCard label="Top Gainer" commodity={overview!.top_gainer} positive />
-            <MoverCard label="Top Loser" commodity={overview!.top_loser} positive={false} />
+            <MoverCard label="Top Gainer" commodity={overview?.top_gainer} positive />
+            <MoverCard label="Top Loser" commodity={overview?.top_loser} positive={false} />
           </View>
         </View>
 
@@ -211,14 +211,18 @@ export default function HomeScreen() {
         </View>
 
         <Text style={styles.footer}>
-          Diperbarui · {new Date(overview!.last_updated).toLocaleTimeString("id-ID")}
+          Diperbarui · {overview?.last_updated ? new Date(overview.last_updated).toLocaleTimeString("id-ID") : "-"}
         </Text>
       </ScrollView>
     </View>
   );
 }
 
-function MoverCard({ label, commodity, positive }: { label: string; commodity: Commodity; positive: boolean }) {
+function MoverCard({ label, commodity, positive }: { label: string; commodity?: Commodity | null; positive: boolean }) {
+  if (!commodity) {
+    return null;
+  }
+
   return (
     <View
       style={[
@@ -231,7 +235,7 @@ function MoverCard({ label, commodity, positive }: { label: string; commodity: C
       <Text style={styles.moverName} numberOfLines={1}>
         {commodity.name}
       </Text>
-      <Text style={[styles.moverChange, { color: positive ? Colors.success : Colors.error }]}>
+      <Text style={[styles.moverChange, { color: positive ? Colors.success : Colors.error }]}> 
         {formatPct(commodity.change_pct)}
       </Text>
       <Text style={styles.moverPrice}>{formatIDR(commodity.current_price)}</Text>
